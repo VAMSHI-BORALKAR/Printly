@@ -1,10 +1,28 @@
-const colorCards = document.querySelectorAll('.color-card');
+const colorCards = document.querySelectorAll('.premium-color-card');
+const previewBox = document.getElementById('liveColorPreview');
+const colorName = document.getElementById('colorName');
+const colorDescription = document.getElementById('colorDescription');
 const previewProduct = document.getElementById('previewProduct');
 
 colorCards.forEach(card => {
   card.addEventListener('click', () => {
-    const selectedColor = card.getAttribute('data-color');
-    previewProduct.style.background = selectedColor;
+    const color = card.getAttribute('data-color');
+    const title = card.querySelector('h3').innerText;
+    const finish = card.querySelector('p').innerText;
+    const tag = card.querySelector('.tag').innerText;
+
+    previewBox.style.background = color;
+    previewBox.style.background = color;
+    colorName.innerText = title;
+    colorDescription.innerText = `${finish} • ${tag}`;
+
+    colorCards.forEach(item => {
+      item.style.border = '1px solid rgba(255,255,255,0.08)';
+      item.style.transform = 'scale(1)';
+    });
+
+    card.style.border = `2px solid ${color}`;
+    card.style.transform = 'translateY(-10px) scale(1.02)';
   });
 });
 
@@ -20,11 +38,4 @@ faqQuestions.forEach(question => {
       answer.style.display = 'block';
     }
   });
-});
-
-const cursorGlow = document.querySelector('.cursor-glow');
-
-document.addEventListener('mousemove', (e) => {
-  cursorGlow.style.left = e.pageX + 'px';
-  cursorGlow.style.top = e.pageY + 'px';
 });
