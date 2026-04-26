@@ -148,7 +148,7 @@ targetCard.classList.add('shared-highlight');
 /* optional badge */
 const badge=document.createElement('div');
 badge.className='shared-badge';
-badge.innerText='Customer Selected';
+badge.innerText='Selected';
 
 targetCard.appendChild(badge);
 
