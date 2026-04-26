@@ -1,57 +1,115 @@
-const colorCards = document.querySelectorAll('.premium-color-card');
-const previewBox = document.getElementById('liveColorPreview');
-const colorName = document.getElementById('colorName');
-const colorDescription = document.getElementById('colorDescription');
-const previewProduct = document.getElementById('previewProduct');
+const colorCards=document.querySelectorAll('.premium-color-card');
+const previewBox=document.getElementById('liveColorPreview');
+const colorName=document.getElementById('colorName');
+const colorDescription=document.getElementById('colorDescription');
 
-colorCards.forEach(card => {
-  card.addEventListener('click', () => {
-    const color = card.getAttribute('data-color');
-    const title = card.querySelector('h3').innerText;
-    const finish = card.querySelector('p').innerText;
-    const tag = card.querySelector('.tag').innerText;
+colorCards.forEach(card=>{
 
-    previewBox.style.background = color;
-    previewBox.style.background = color;
-    colorName.innerText = title;
-    colorDescription.innerText = `${finish} • ${tag}`;
+card.addEventListener('click',()=>{
 
-    colorCards.forEach(item => {
-      item.style.border = '1px solid rgba(255,255,255,0.08)';
-      item.style.transform = 'scale(1)';
-    });
+const color=card.getAttribute('data-color');
+const title=card.querySelector('h3').innerText;
+const finish=card.querySelector('p').innerText;
+const tag=card.querySelector('.tag').innerText;
 
-    card.style.border = `2px solid ${color}`;
-    card.style.transform = 'translateY(-10px) scale(1.02)';
-  });
+previewBox.style.background=color;
+
+colorName.innerText=title;
+colorDescription.innerText=
+`${finish} • ${tag}`;
+
+colorCards.forEach(item=>{
+item.style.border=
+'1px solid rgba(255,255,255,0.08)';
+item.style.transform='scale(1)';
 });
 
-const faqQuestions = document.querySelectorAll('.faq-question');
+card.style.border=`2px solid ${color}`;
+card.style.transform=
+'translateY(-10px) scale(1.02)';
 
-faqQuestions.forEach(question => {
-  question.addEventListener('click', () => {
-    const answer = question.nextElementSibling;
-
-    if (answer.style.display === 'block') {
-      answer.style.display = 'none';
-    } else {
-      answer.style.display = 'block';
-    }
-  });
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
+});
 
-    const targetId = this.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
 
-    if (targetSection) {
-      window.scrollTo({
-        top: targetSection.offsetTop - 40,
-        behavior: 'smooth'
-      });
-    }
-  });
+const faqQuestions=
+document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question=>{
+
+question.addEventListener('click',()=>{
+
+const answer=
+question.nextElementSibling;
+
+if(answer.style.display==='block'){
+answer.style.display='none';
+}
+else{
+answer.style.display='block';
+}
+
+});
+
+});
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+
+anchor.addEventListener('click',function(e){
+
+e.preventDefault();
+
+const targetId=
+this.getAttribute('href');
+
+const targetSection=
+document.querySelector(targetId);
+
+if(targetSection){
+window.scrollTo({
+top:targetSection.offsetTop-40,
+behavior:'smooth'
+});
+}
+
+});
+
+});
+
+
+document.querySelectorAll('.share-btn').forEach(btn=>{
+
+btn.addEventListener('click',function(e){
+
+e.stopPropagation();
+
+const colorName=
+this.dataset.colorName;
+
+const colorSlug=
+colorName
+.toLowerCase()
+.replace(/\s+/g,'-');
+
+const shareLink=
+window.location.origin+
+window.location.pathname+
+"#"+
+colorSlug;
+
+const text=
+`I like the ${colorName} color from Printly — check it out: ${shareLink}`;
+
+const whatsappURL=
+`https://wa.me/?text=${encodeURIComponent(text)}`;
+
+window.open(
+whatsappURL,
+'_blank'
+);
+
+});
+
 });

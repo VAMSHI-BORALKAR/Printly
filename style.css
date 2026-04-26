@@ -502,3 +502,30 @@ footer h2 {
     height: 200px;
   }
 }
+
+.share-btn{
+margin-top:16px;
+padding:11px 16px;
+border:none;
+border-radius:14px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+color:white;
+font-weight:600;
+font-size:13px;
+cursor:pointer;
+transition:.3s ease;
+display:inline-flex;
+align-items:center;
+gap:8px;
+}
+
+.share-btn:hover{
+transform:translateY(-3px);
+background:rgba(37,99,235,.22);
+box-shadow:0 8px 20px rgba(37,99,235,.25);
+}
+
+.share-btn:active{
+transform:scale(.96);
+}
