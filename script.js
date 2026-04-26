@@ -114,3 +114,53 @@ whatsappURL,
 });
 
 });
+
+window.addEventListener('load', ()=>{
+
+const hash=window.location.hash;
+
+if(!hash) return;
+
+const targetCard=document.querySelector(hash);
+
+if(!targetCard) return;
+
+
+/* auto scroll */
+setTimeout(()=>{
+targetCard.scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+},500);
+
+
+/* trigger existing click logic */
+setTimeout(()=>{
+targetCard.click();
+},900);
+
+
+/* premium highlight */
+targetCard.classList.add('shared-highlight');
+
+
+/* optional badge */
+const badge=document.createElement('div');
+badge.className='shared-badge';
+badge.innerText='Customer Selected';
+
+targetCard.appendChild(badge);
+
+
+/* remove after few sec */
+setTimeout(()=>{
+targetCard.classList.remove('shared-highlight');
+
+if(badge){
+badge.remove();
+}
+
+},8000);
+
+});
