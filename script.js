@@ -10,13 +10,14 @@ card.addEventListener('click',()=>{
 const color=card.getAttribute('data-color');
 const title=card.querySelector('h3').innerText;
 const finish=card.querySelector('p').innerText;
+const material=card.querySelector('.material').innerText;
 const tag=card.querySelector('.tag').innerText;
 
 previewBox.style.background=color;
 
 colorName.innerText=title;
 colorDescription.innerText=
-`${finish} • ${tag}`;
+`${finish} • ${material} • ${tag}`;
 
 colorCards.forEach(item=>{
 item.style.border=
